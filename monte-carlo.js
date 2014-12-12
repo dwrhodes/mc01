@@ -29,7 +29,7 @@ if (Meteor.isClient) {
     'blur #noteRate': function (event) {
       //Session.set("noteRate", event.target.value);
       //alert(this._id);
-      alert( "Target value: " + event.target.value);
+      //alert( "Target value: " + event.target.value);
       Meteor.call("calculateMonthlyRate", this._id, event.target.value);
       return false;
     }
@@ -39,8 +39,9 @@ if (Meteor.isClient) {
 
 Meteor.methods({
   calculateMonthlyRate: function (recId, noteRate) {
-    var rec = Recommendations.findOne(recId);
-    var monthlyRate = getMonthlyRate(rec.noteRate);
+//    var rec = Recommendations.findOne(recId);
+//    var monthlyRate = getMonthlyRate(rec.noteRate);
+    var monthlyRate = getMonthlyRate(noteRate);
 //    Meteor.call("calculateMonthlyRate", this._id, event.target.value);
     Recommendations.update(recId, { $set: {
       noteRate: noteRate,
