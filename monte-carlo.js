@@ -41,7 +41,7 @@ Meteor.methods({
   calculateMonthlyRate: function (recId, noteRate) {
     var rec = Recommendations.findOne(recId);
     var monthlyRate = getMonthlyRate(rec.noteRate);
-    Meteor.call("calculateMonthlyRate", this._id, event.target.value);
+//    Meteor.call("calculateMonthlyRate", this._id, event.target.value);
     Recommendations.update(recId, { $set: {
       noteRate: noteRate,
       monthlyRate: monthlyRate
