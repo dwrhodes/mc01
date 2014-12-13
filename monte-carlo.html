@@ -2,22 +2,39 @@
   <title>Monte Carlo</title>
 </head>
 <body>
-{{> rate}}
+<table>
+    <tr>
+        <td>
+            {{> rate}}
+        </td>
+        <td>
+            <h4>Recommendations</h4>
+            {{#each recs}}
+                {{> rec}}
+            {{/each}}
+        </td>
+    </tr>
+</table>
 </body>
 
 <template name="rate">
-<form>
-    <button id="new">Create new Recommendation</button><br/>
-    {{#with recommendation}}
-        <label>Note Rate
-            <input type="text" id="noteRate" />
-        </label>
-        <br/>
-        <label>Another field
-            <input type="text" id="another" />
-        </label>
-        <br/>
-        Monthly Rate <span>{{monthlyRate}}</span>
-    {{/with}}
-</form>
+    <form>
+        <button id="remove">Remove all Recommendations</button><br/>
+        <button id="new">Create new Recommendation</button><br/>
+        {{#with currentRecommendation}}
+            <label>Note Rate
+                <input type="text" id="noteRate" />
+            </label>
+            <br/>
+            <label>Another field
+                <input type="text" id="another" />
+            </label>
+            <br/>
+            Monthly Rate <span>{{monthlyRate}}</span>
+        {{/with}}
+    </form>
+</template>
+
+<template name="rec">
+        <p>{{_id}} {{noteRate}} {{monthlyRate}}</p>
 </template>
